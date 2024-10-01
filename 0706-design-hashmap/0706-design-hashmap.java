@@ -4,11 +4,8 @@ class MyHashMap {
     
 
     public MyHashMap() {
-        hash=new int[10000001];
-        
-        for(int i=0;i<10000001;i++){
-            hash[i]=-1;
-        }
+        hash=new int[1000001];
+        Arrays.fill(hash,-1);
     }
     
     public void put(int key, int value) {
