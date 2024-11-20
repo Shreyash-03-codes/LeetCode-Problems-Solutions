@@ -1,23 +1,22 @@
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
         
-        int n=matrix.length;
-        
         int row=0;
         int col=matrix[0].length-1;
-        
-        while(row<n && col>=0){
+        while(row<matrix.length && col>=0){
+            
             if(matrix[row][col]==target){
                 return true;
             }
             
-            if(matrix[row][col]<target){
-                row++;
+            if(target<matrix[row][col]){
+                col--;
             }
             else{
-                col--;
+                row++;
             }
         }
         return false;
+        
     }
 }
