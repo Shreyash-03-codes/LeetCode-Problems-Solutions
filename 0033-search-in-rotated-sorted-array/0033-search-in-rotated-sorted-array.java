@@ -7,7 +7,7 @@ class Solution {
         while(start<=last){
             int mid=(start+last)/2;
             
-            if(nums[mid]==target){
+            if(target==nums[mid]){
                 return mid;
             }
             
@@ -20,7 +20,7 @@ class Solution {
                 }
             }
             else{
-                 if(nums[mid]<=target && target<=nums[last]){
+                if(nums[mid]<=target && target<=nums[last]){
                     start=mid+1;
                 }
                 else{
@@ -30,5 +30,4 @@ class Solution {
         }
         return -1;
     }
-    
 }
