@@ -1,28 +1,30 @@
 class Solution {
     public int findMin(int[] nums) {
-  
-        
+     
+        if(nums.length==1){
+            return nums[0];
+        }
         int start=0;
-        int end=nums.length-1;
+        int last=nums.length-1;
         
-        int min=Integer.MAX_VALUE;
+        int min=6000;
         
-        while(start<=end){
-            int mid=(start+end)/2;
+        while(start<=last){
+            int mid=(start+last)/2;
             
-            if(nums[start]==nums[mid] && nums[mid]==nums[end]){
-                min=Math.min(min,nums[mid]);
-                start=start+1;
-                end=end-1;
+            if(nums[start]==nums[mid] && nums[mid]==nums[last]){
+                min=Math.min(nums[start],min);
+                start++;
+                last--;
             }
             
             else if(nums[start]<=nums[mid]){
-                min=Math.min(min,nums[start]);
+                min=Math.min(nums[start],min);
                 start=mid+1;
             }
             else{
-                min=Math.min(min,nums[mid]);
-                end=mid-1;
+                 min=Math.min(nums[mid],min);
+                last=mid-1;
             }
         }
         return min;
