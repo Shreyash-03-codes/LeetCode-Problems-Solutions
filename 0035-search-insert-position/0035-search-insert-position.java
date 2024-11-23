@@ -7,15 +7,15 @@ class Solution {
         while(start<=last){
             int mid=(start+last)/2;
             
-            if(nums[mid]==target){
+            if(nums[mid]== target){
                 return mid;
             }
             
-            else if(target<nums[mid]){
-                last=mid-1;
+            if(nums[mid]<target){
+                start=mid+1;
             }
             else{
-                start=mid+1;
+                last=mid-1;
             }
         }
         return start;
