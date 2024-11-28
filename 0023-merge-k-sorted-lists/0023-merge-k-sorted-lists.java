@@ -17,10 +17,10 @@ class Solution {
             }
         });
         
-        for(ListNode list:lists){
-            while(list!=null){
-                pq.add(list.val);
-                list=list.next;
+        for(ListNode node:lists){
+            while(node!=null){
+                pq.add(node.val);
+                node=node.next;
             }
         }
         
@@ -28,16 +28,13 @@ class Solution {
         ListNode temp=null;
         
         while(!pq.isEmpty()){
-            int n=pq.remove();
             if(head==null){
-                head=new ListNode(n);
+                head=new ListNode(pq.remove());
                 temp=head;
-                
             }
             else{
-                temp.next=new ListNode(n);
+                temp.next=new ListNode(pq.remove());
                 temp=temp.next;
-               
             }
         }
         return head;
