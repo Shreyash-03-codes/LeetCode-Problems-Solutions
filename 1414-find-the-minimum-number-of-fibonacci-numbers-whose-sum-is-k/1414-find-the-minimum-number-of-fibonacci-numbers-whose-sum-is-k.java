@@ -12,7 +12,7 @@ class Solution {
             n2=n3;
         }
         int count=0;
-        while(k!=0){
+        while(k!=0 && !set.isEmpty()){
             if(set.contains(k)){
                 count++;
                 k-=k;
