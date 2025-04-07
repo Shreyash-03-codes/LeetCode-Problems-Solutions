@@ -10,38 +10,68 @@
  */
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-
-        ListNode dummy=new ListNode(-1);
-
-        ListNode curr=dummy;
-
-        ListNode temp1=list1;
-        ListNode temp2=list2;
-
-        while(temp1!=null && temp2!=null){
-            if(temp1.val<=temp2.val){
-                curr.next=temp1;
-                temp1=temp1.next;
+        
+        if(list1==null){
+            return list2;
+        }
+        if(list2==null){
+            return list1;
+        }
+        
+        ListNode head=null;
+        ListNode temp=null;
+        while(list1!=null && list2!=null){
+            if(list1.val<=list2.val){
+                if(head==null){
+                    head=list1;
+                    temp=head;
+                }
+                else{
+                    head.next=list1;
+                    head=head.next;
+                }
+                list1=list1.next;
             }
             else{
-                curr.next=temp2;
-                temp2=temp2.next;
+                if(head==null){
+                    head=list2;
+                                        temp=head;
+
+                }
+                else{
+                    head.next=list2;
+                    head=head.next;
+                }
+                list2=list2.next;
             }
-            curr=curr.next;
         }
 
-        while(temp1!=null){
-            curr.next=temp1;
-            temp1=temp1.next;
-            curr=curr.next;
+        while(list1!=null){
+            if(head==null){
+                head=list1;
+                                    temp=head;
+
+            }
+            else{
+            head.next=list1;
+            head=head.next;
+            }
+            list1=list1.next;
         }
 
-         while(temp2!=null){
-            curr.next=temp2;
-            temp2=temp2.next;
-            curr=curr.next;
+        while(list2!=null){
+            
+            if(head==null){
+                head=list2;
+                                    temp=head;
+
+            }
+            else{
+            head.next=list2;
+            head=head.next;
+            }
+            list2=list2.next;
         }
-        return dummy.next;
-        
+        return temp;
     }
 }
