@@ -1,47 +1,44 @@
 class Solution {
     public boolean backspaceCompare(String s, String t) {
-        
-        Stack<Character> stack1=new Stack<>();
-        Stack<Character> stack2=new Stack<>();
-        
-        char[] str1=s.toCharArray();
-        char[] str2=t.toCharArray();
-        
-        for(char a:str1){
-            if(a=='#' && stack1.isEmpty()){
+
+        if(!s.contains("#") && !t.contains("#")){
+            return s.equals(t);
+        }
+        Stack<Character> sStack =new Stack<>();
+        Stack<Character> tStack =new Stack<>();
+        for(char ch:s.toCharArray()){
+            if(ch=='#' && sStack.isEmpty()){
                 continue;
             }
-            if(a=='#' && !stack1.isEmpty()){
-                stack1.pop();
+
+            if(ch=='#' && !sStack.isEmpty()){
+                sStack.pop();
             }
             else{
-                stack1.push(a);
+                sStack.push(ch);
             }
         }
-        
-        for(char a:str2){
+        for(char ch:t.toCharArray()){
+            if(ch=='#' && tStack.isEmpty()){
+                continue;
+            }
             
-            if(a=='#' && stack2.isEmpty()){
-                continue;
-            }
-            if(a=='#' && !stack2.isEmpty()){
-                stack2.pop();
+            if(ch=='#' && !tStack.isEmpty()){
+                tStack.pop();
             }
             else{
-                stack2.push(a);
+                tStack.push(ch);
             }
         }
-        
-        if(stack1.size()!=stack2.size()){
+
+        if(sStack.size()!=tStack.size()){
             return false;
         }
-        
-        while(!stack1.isEmpty() && !stack2.isEmpty()){
-            if(stack1.pop()!=stack2.pop()){
+        if(!sStack.isEmpty() && !tStack.isEmpty()){
+            if(sStack.pop()!=tStack.pop()){
                 return false;
             }
         }
-        
         return true;
         
     }
