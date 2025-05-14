@@ -10,43 +10,31 @@
  */
 class Solution {
     public int[] nextLargerNodes(ListNode head) {
-        
-        ListNode temp=head;
+        ListNode node=null;
         int size=0;
-        
-        while(temp!=null){
-            temp=temp.next;
+        while(head!=null){
+            ListNode nextNode=head.next;
+            head.next=node;
+            node=head;
+            head=nextNode;
             size++;
         }
-        
-        int[] nums=new int[size];
-        int j=0;
-        
-        ListNode temp1=head;
-        
-        while(temp1!=null){
-            
-            ListNode temp2=temp1.next;
-            boolean flag=false;
-            
-            while(temp2!=null){
-                
-                if(temp2.val>temp1.val){
-                    nums[j++]=temp2.val;
-                    flag=true;
-                    break;
-                }
-                temp2=temp2.next;
+        int[]result=new int[size];
+        size-=1;
+        Stack<Integer> stack=new Stack<>();
+        while(node!=null){
+            while(!stack.isEmpty() && node.val>=stack.peek()){
+                stack.pop();
             }
-            
-            if(!flag){
-                nums[j++]=0;
+            if(stack.isEmpty()){
+                result[size--]=0;
             }
-            
-            temp1=temp1.next;
+            else{
+                result[size--]=stack.peek();
+            }
+            stack.push(node.val);
+            node=node.next;
         }
-        
-        return nums;
-        
+        return result;
     }
 }
