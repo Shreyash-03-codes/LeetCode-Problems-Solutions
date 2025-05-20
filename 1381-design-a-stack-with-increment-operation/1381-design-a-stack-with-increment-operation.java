@@ -1,50 +1,38 @@
 class CustomStack {
 
-    int[] stack;
-    int top;
-    int size;
-    int capacity;
-    
+    Stack<Integer> stack;
+    int maxSize=0;
     public CustomStack(int maxSize) {
-        stack=new int[maxSize];
-        top=-1;
-        size=0;
-        capacity=maxSize;
+        this.maxSize=maxSize;
+        this.stack=new Stack<>();
     }
     
     public void push(int x) {
-        
-        if(size==capacity){
-            return;
+        if(stack.size()<this.maxSize){
+            stack.push(x);
         }
-        
-        top++;
-        size++;
-        stack[top]=x;
-        
     }
     
     public int pop() {
-        
-        if(size==0){
-            return -1;
-        }
-        
-        int val=stack[top];
-        top--;
-        size--;
-        return val;
+        return stack.isEmpty()?-1:stack.pop();
     }
     
     public void increment(int k, int val) {
-        
-        if(size==0){
-            return;
+        Stack<Integer> s=new Stack<>();
+        int i=0;
+        int n=stack.size()-k;
+        while(i<n){
+            i++;
+            s.push(stack.pop());
         }
-        int n=Math.min(k,size);
-        
-        for(int i=0;i<n;i++){
-            stack[i]+=val;
+        while(!stack.isEmpty()){
+            
+            s.push(stack.pop()+val);
+        }
+
+        while(!s.isEmpty()){
+            
+            stack.push(s.pop());
         }
         
     }
