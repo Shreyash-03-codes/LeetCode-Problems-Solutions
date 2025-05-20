@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/design-a-stack-with-increment-operation/">1381. Design a Stack With Increment Operation</a></h2><h3>Medium</h3><hr><div><p>Design a stack that supports increment operations on its elements.</p>
+<h2><a href="https://leetcode.com/problems/design-a-stack-with-increment-operation">1381. Design a Stack With Increment Operation</a></h2><h3>Medium</h3><hr><p>Design a stack that supports increment operations on its elements.</p>
 
 <p>Implement the <code>CustomStack</code> class:</p>
 
@@ -12,8 +12,9 @@
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input</strong>
-["CustomStack","push","push","pop","push","push","push","increment","increment","pop","pop","pop","pop"]
+<pre>
+<strong>Input</strong>
+[&quot;CustomStack&quot;,&quot;push&quot;,&quot;push&quot;,&quot;pop&quot;,&quot;push&quot;,&quot;push&quot;,&quot;push&quot;,&quot;increment&quot;,&quot;increment&quot;,&quot;pop&quot;,&quot;pop&quot;,&quot;pop&quot;,&quot;pop&quot;]
 [[3],[1],[2],[],[2],[3],[4],[5,100],[2,100],[],[],[],[]]
 <strong>Output</strong>
 [null,null,null,2,null,null,null,null,null,103,202,201,-1]
@@ -41,4 +42,3 @@ stk.pop();                            // return -1 --&gt; Stack is empty return 
 	<li><code>0 &lt;= val &lt;= 100</code></li>
 	<li>At most <code>1000</code> calls will be made to each method of <code>increment</code>, <code>push</code> and <code>pop</code> each separately.</li>
 </ul>
-</div>
