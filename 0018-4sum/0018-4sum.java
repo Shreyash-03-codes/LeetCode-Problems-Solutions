@@ -1,62 +1,36 @@
 class Solution {
     public List<List<Integer>> fourSum(int[] nums, int target) {
-        
+        HashSet<List<Integer>> set=new HashSet<>();
+        List<List<Integer>> list=new ArrayList<>();
         Arrays.sort(nums);
-        List<List<Integer>> result=new ArrayList<>();
-        int n=nums.length;
-        for(int i=0;i<n-3;i++){
-            
-            if(i!=0 && nums[i]==nums[i-1]){
-                continue;
-            }
-            
-            for(int j=i+1;j<n-2;j++){
-                if(j>i+1 && nums[j]==nums[j-1]){
-                    continue;
-                }
-            
-                int start=j+1;
-                int last=n-1;
-                
-                while(start<last){
+
+        for(int i=0;i<nums.length-3;i++){
+            for(int j=i+1;j<nums.length-2;j++){
+                int s=j+1;
+                int l=nums.length-1;
+                while(s<l){
                     long sum=nums[i]+nums[j];
-                    sum+=nums[start]+nums[last];
-                    
+                    sum+=nums[s]+nums[l];
                     if(sum==target){
-                        ArrayList<Integer> list=new ArrayList<>();
-                        
-                        list.add(nums[i]);
-                        list.add(nums[j]);
-                        list.add(nums[start]);
-                        list.add(nums[last]);
-                        
-                        result.add(list);
-                        
-                        start++;
-                        last--;
-                        
-                        while(start<last && nums[start]==nums[start-1]){
-                            start++;
+                        List<Integer> li=Arrays.asList(nums[i],nums[j],nums[s],nums[l]);
+                        if(!set.contains(li)){
+                            set.add(li);
+                            list.add(li);
+                          
                         }
-                        
-                        while(start<last && nums[last]==nums[last+1]){
-                            last--;
+                        s++;
+                        l--;
+                       
+                    }
+                     else if(sum<target){
+                            s++;
                         }
-                        
-                        
-                    }
-                    
-                    else if(sum<target){
-                        start++;
-                    }
-                    else if(sum>target){
-                        last--;
-                    }
-                    
+                        else{
+                            l--;
+                        }
                 }
             }
         }
-        return result;
-        
+        return list;
     }
 }
